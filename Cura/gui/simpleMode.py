@@ -117,7 +117,8 @@ class simpleModePanel(wx.Panel):
 								settings[setting.getName()] = cp.get('profile', setting.getName())
 
 		if self.printSupport.GetValue():
-			settings['support'] = "Exterior Only"
+			# settings['support'] = "Exterior Only"
+			settings['support'] = "Everywhere"
 		return settings
 
 	def updateProfileToControls(self):

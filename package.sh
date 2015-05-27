@@ -233,14 +233,19 @@ if [ "$BUILD_TARGET" = "darwin" ]; then
 
     #Add cura version file (should read the version from the bundle with pyobjc, but will figure that out later)
     echo $BUILD_NAME > scripts/darwin/dist/Cura.app/Contents/Resources/version
-	rm -rf CuraEngine
+	#Giao#rm -rf CuraEngine
 	gitClone \
 	  ${CURA_ENGINE_REPO} \
 	  ${CURA_ENGINE_REPO_PUSHURL} \
 	  CuraEngine
-    if [ $? != 0 ]; then echo "Failed to clone CuraEngine"; exit 1; fi
+	#Giao: checkout branch legacy {{{
+	cd CuraEngine
+	git checkout legacy
+	cd ..
+	# }}}
+	if [ $? != 0 ]; then echo "Failed to clone CuraEngine"; exit 1; fi
 	$MAKE -C CuraEngine VERSION=${BUILD_NAME}
-    if [ $? != 0 ]; then echo "Failed to build CuraEngine"; exit 1; fi
+	if [ $? != 0 ]; then echo "Failed to build CuraEngine"; exit 1; fi
 	cp CuraEngine/build/CuraEngine scripts/darwin/dist/Cura.app/Contents/Resources/CuraEngine
 
 	cd scripts/darwin

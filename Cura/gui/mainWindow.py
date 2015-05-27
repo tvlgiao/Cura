@@ -33,7 +33,7 @@ except:
 
 class mainWindow(wx.Frame):
 	def __init__(self):
-		super(mainWindow, self).__init__(None, title='Cura - ' + version.getVersion())
+		super(mainWindow, self).__init__(None, title='3DMaker - ' + version.getVersion())
 
 		wx.EVT_CLOSE(self, self.OnClose)
 
@@ -190,13 +190,13 @@ class mainWindow(wx.Frame):
 
 		helpMenu = wx.Menu()
 		i = helpMenu.Append(-1, _("Online documentation..."))
-		self.Bind(wx.EVT_MENU, lambda e: webbrowser.open('http://daid.github.com/Cura'), i)
+		self.Bind(wx.EVT_MENU, lambda e: webbrowser.open('http://www.3dmaker.vn/cura'), i)
 		i = helpMenu.Append(-1, _("Report a problem..."))
-		self.Bind(wx.EVT_MENU, lambda e: webbrowser.open('https://github.com/daid/Cura/issues'), i)
+		self.Bind(wx.EVT_MENU, lambda e: webbrowser.open('https://github.com/tvlgiao/Cura/issues'), i)
 		i = helpMenu.Append(-1, _("Check for update..."))
 		self.Bind(wx.EVT_MENU, self.OnCheckForUpdate, i)
 		i = helpMenu.Append(-1, _("Open YouMagine website..."))
-		self.Bind(wx.EVT_MENU, lambda e: webbrowser.open('https://www.youmagine.com/'), i)
+		self.Bind(wx.EVT_MENU, lambda e: webbrowser.open('https://www.3dmaker.vn/'), i)
 		i = helpMenu.Append(-1, _("About Cura..."))
 		self.Bind(wx.EVT_MENU, self.OnAbout, i)
 		self.menubar.Append(helpMenu, _("Help"))
